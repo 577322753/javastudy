@@ -4,6 +4,7 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 .idea
 
+*.iml
 
 # CMake
 cmake-build-*/
@@ -50,3 +51,25 @@ fabric.properties
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+将删除 AMQPLearn/amqpStudy.iml
+将删除 AMQPLearn/target/generated-sources/
+将删除 AMQPLearn/target/maven-status/
+将删除 AnnotationAndReflect/AnnotationAndReflect.iml
+将删除 AnnotationAndReflect/target/generated-sources/
+将删除 AnnotationAndReflect/target/maven-status/
+将删除 DataStruct/datastruct.iml
+将删除 DataStruct/target/generated-sources/
+将删除 DataStruct/target/maven-status/
+将删除 Java8Learn/Java8Learn.iml
+将删除 Java8Learn/target/generated-sources/
+将删除 Java8Learn/target/maven-status/
+将删除 JvmLearn/JvmLearn.iml
+将删除 javastudy.iml
+将删除 nettyStudy/nettyStudy.iml
+将删除 nettyStudy/target/classes/testFile/
+将删除 nettyStudy/target/generated-sources/
+将删除 nettyStudy/target/maven-status/
+将删除 sominterestingtest/sominterestingtest.iml
+将删除 threadLearn/target/generated-sources/
+将删除 threadLearn/target/maven-status/
+将删除 threadLearn/threadLearn.iml
