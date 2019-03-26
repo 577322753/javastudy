@@ -17,6 +17,7 @@
         <module>nettyStudy</module>
         <module>sominterestingtest</module>
         <module>threadLearn</module>
+        <module>JavaSecretLearn</module>
     </modules>
 
     <properties>
