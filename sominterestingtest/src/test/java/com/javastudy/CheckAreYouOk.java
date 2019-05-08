@@ -10,5 +10,5 @@ package com.javastudy;
  * @date: 2018-09-28 17:22
  */
 public class CheckAreYouOk {
-    
+
 }

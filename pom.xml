@@ -18,6 +18,7 @@
         <module>sominterestingtest</module>
         <module>threadLearn</module>
         <module>JavaSecretLearn</module>
+        <module>shiroStudy</module>
     </modules>
 
     <properties>
