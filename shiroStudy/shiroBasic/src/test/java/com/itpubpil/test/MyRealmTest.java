@@ -38,11 +38,11 @@ public class MyRealmTest {
         // 5.检测主体认证请求是否通过
         Assert.assertTrue(subject.isAuthenticated());
 
-//        // 检查角色
-//        subject.checkRole("system");
+        // 检查角色
+        subject.checkRole("admin");
 
         // 检查权限
-        //subject.checkPermission("update");
+        subject.checkPermission("user:add");
 
         // 6.主体注销登录
         subject.logout();

@@ -5,11 +5,15 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.Permission;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author wangjingbiao
@@ -33,7 +37,37 @@ public class MyRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        return null;
+        String userName = (String) principals.getPrimaryPrincipal();
+        Set<String> roles = getRolesByUserName(userName); 
+        Set<String> permissions = getPermissionsByUserName(userName);
+        SimpleAuthorizationInfo simpleAuthenticationInfo = new SimpleAuthorizationInfo();
+        simpleAuthenticationInfo.setStringPermissions(permissions);
+        simpleAuthenticationInfo.setRoles(roles);
+        return simpleAuthenticationInfo;
+    }
+
+    /**
+     * 返回用户的权限信息
+     * @param userName
+     * @return
+     */
+    private Set<String> getPermissionsByUserName(String userName) {
+        Set<String> sets = new HashSet<>();
+        sets.add("user:add");
+        sets.add("user:remove");
+        return sets;
+    }
+
+    /**
+     * 返回用户的角色信息
+     * @param userName
+     * @return
+     */
+    private Set<String> getRolesByUserName(String userName) {
+        Set<String> sets = new HashSet<>();
+        sets.add("admin");
+        sets.add("user");
+        return sets;
     }
 
     /**
@@ -45,14 +79,19 @@ public class MyRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        // 1.从主体传过来的认证信息中获取用户名
-        String userName = (String) token.getPrincipal();
-        String password = (String) token.getCredentials();
-        // 2.从数据库中获取密码，这里暂时用map来进行代替
-        String needPassword = getPasswordByUserName(userName);
-        if (needPassword.equals(password)){
-            AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(userName,password,"MyRealm");
-            return authenticationInfo;
+        if(token instanceof MyUserNamePasswordToken){
+            MyUserNamePasswordToken token1 = (MyUserNamePasswordToken) token;
+            // 1.从主体传过来的认证信息中获取用户名
+            String userName = (String) token1.getPrincipal();
+            String password = (String) token1.getCredentials();
+            // 2.从数据库中获取密码，这里暂时用map来进行代替
+            String needPassword = getPasswordByUserName(userName);
+            if (needPassword.equals(password)){
+                AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(userName,password,"MyRealm");
+                return authenticationInfo;
+            }else{
+                return null;
+            }
         }else{
             return null;
         }
