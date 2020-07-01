@@ -27,7 +27,7 @@
         <junit.version>4.12</junit.version>
         <sl4fj.version>1.7.12</sl4fj.version>
         <logback.version>1.1.1</logback.version>
-        <mysql-connec.version>5.1.35</mysql-connec.version>
+        <mysql-connec.version>8.0.16</mysql-connec.version>
         <c3p0.version>0.9.1.2</c3p0.version>
         <druid.version>1.1.6</druid.version>
         <okhttp.version>3.3.0</okhttp.version>
